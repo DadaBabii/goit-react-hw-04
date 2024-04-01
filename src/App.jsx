@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
 
 // import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar/SearchBar";
@@ -10,33 +9,38 @@ import ErrorMessage from "./components/ErrorMessage";
 import { requestPhotosByQuery } from "./services/api";
 
 function App() {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
   useEffect(() => {
+    if (query.length === 0) return;
+
     async function fetchImages() {
       try {
-        setLoading(false);
-        const response = await axios.get(
-          "https://api.unsplash.com/search/photos?client_id=tEOYGyqRNrrpNcoRKp33yFBNWiliLSsoe9TBEqr2O5U&query=offic"
-        );
-
-        console.log(response.data.results);
-        setImages(response.data.results);
+        setError(false);
+        setLoading(true);
+        const data = await requestPhotosByQuery(query, page);
+        console.log(data.results);
+        setImages(data.results);
       } catch (error) {
         setError(true);
       } finally {
         setLoading(false);
       }
     }
-
     fetchImages();
-  }, []);
+  }, [query, page]);
+
+  const onSearchImages = (inputValue) => {
+    setQuery(inputValue);
+    console.log(query);
+  };
 
   return (
     <>
-      <SearchBar />
+      <SearchBar onSearch={onSearchImages} />
       {loading && <Loader />}
       {error && <ErrorMessage />}
       {images && <ImageGallery images={images} />}
