@@ -18,7 +18,7 @@ export const requestPhotosByQuery = async (query = "", page=1) => {
         params: {
           client_id: KEY,
           query: `${query}`,
-          per_page: 15,
+          per_page: 20,
           page: `${page}`,
    
     

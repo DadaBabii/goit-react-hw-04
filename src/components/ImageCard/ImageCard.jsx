@@ -1,7 +1,8 @@
 const ImageCard = ({ image }) => {
+  // console.log(image.id);
   return (
     <div>
-      <img src={image.urls.small} alt="image" />
+      <img id={image.id} src={image.urls.small} alt="image" />
     </div>
   );
 };

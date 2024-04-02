@@ -6,7 +6,7 @@ const SearchBar = ({ onSearch }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const searchInput = evt.target.elements.searchvalue.value.trim();
-    if (evt.target.elements.searchvalue.value.trim() === "") {
+    if (searchInput === "") {
       notify();
       console.log("nothing");
 
