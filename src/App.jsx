@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-// import "./App.css";
-
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage";
@@ -45,10 +43,15 @@ function App() {
 
   const handleMoreImages = () => {
     setPage((page) => page + 1);
+    // console.log(data.results);
   };
   const onSearchImages = (inputValue) => {
-    setImages([]);
-    setQuery(inputValue);
+    if (inputValue === query) {
+      setQuery(inputValue);
+    } else {
+      setImages([]);
+      setQuery(inputValue);
+    }
   };
 
   const onClickImage = (e) => {
