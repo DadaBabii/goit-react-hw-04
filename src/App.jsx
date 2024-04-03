@@ -47,7 +47,8 @@ function App() {
   };
   const onSearchImages = (inputValue) => {
     if (inputValue === query) {
-      setQuery(inputValue);
+      // setQuery(inputValue);
+      setImages(images);
     } else {
       setImages([]);
       setQuery(inputValue);

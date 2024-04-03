@@ -6,8 +6,8 @@ const ImageGallery = ({ images, onClick }) => {
       {Array.isArray(images) &&
         images.map((image) => {
           return (
-            <li onClick={onClick} key={image.id}>
-              <ImageCard image={image} />
+            <li key={image.id}>
+              <ImageCard onClick={onClick} image={image} />
             </li>
           );
         })}
