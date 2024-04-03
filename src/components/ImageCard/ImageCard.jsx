@@ -2,7 +2,13 @@ const ImageCard = ({ image }) => {
   // console.log(image.id);
   return (
     <div>
-      <img id={image.id} src={image.urls.small} alt="image" />
+      <img
+        id={image.id}
+        src={image.urls.small}
+        alt="image"
+        width={280}
+        height={200}
+      />
     </div>
   );
 };
