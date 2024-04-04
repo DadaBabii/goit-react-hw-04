@@ -29,7 +29,7 @@ function App() {
         setLoading(true);
 
         const data = await requestPhotosByQuery(query, page);
-        setPage(1);
+
         setTtotalpages(data.total_pages);
 
         setImages((previmage) => [...previmage, ...data.results]);
@@ -51,6 +51,7 @@ function App() {
       // setQuery(inputValue);
       setImages(images);
     } else {
+      setPage(1);
       setImages([]);
       setQuery(inputValue);
     }
