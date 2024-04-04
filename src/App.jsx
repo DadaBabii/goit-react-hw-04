@@ -27,8 +27,9 @@ function App() {
       try {
         setError(false);
         setLoading(true);
-        const data = await requestPhotosByQuery(query, page);
 
+        const data = await requestPhotosByQuery(query, page);
+        setPage(1);
         setTtotalpages(data.total_pages);
 
         setImages((previmage) => [...previmage, ...data.results]);
