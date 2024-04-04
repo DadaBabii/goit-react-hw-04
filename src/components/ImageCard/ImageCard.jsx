@@ -1,9 +1,8 @@
 const ImageCard = ({ image, onClick }) => {
   // console.log(image.id);
   return (
-    <div>
+    <div onClick={onClick}>
       <img
-        onClick={onClick}
         id={image.id}
         src={image.urls.small}
         alt="image"
